@@ -1,0 +1,40 @@
+@* explique aqui *@
+@model Personagem
+<h1>Cadastro de Personagem</h1>
+<hr>
+<form method="post">
+<div class="form-floating mb-3">
+<input type="text" class="form-control" placeholder="Personagem" asp-for="@Model.Nome">
+<label asp-for="@Model.Nome"></label>
+<span class="text-danger text-sm" asp-validation-for="@Model.Nome"></span>
+</div>
+<div class="form-floating mb-3">
+<input type="text" class="form-control" placeholder="Personagem" asp-for="@Model.Altura">
+<label asp-for="@Model.Altura"></label>
+<span class="text-danger text-sm" asp-validation-for="@Model.Altura"></span>
+</div>
+<div class="form-floating mb-3">
+<input type="date" class="form-control" placeholder="Personagem" asp-for="@Model.DataEstreia">
+<label asp-for="@Model.DataEstreia"></label>
+<span class="text-danger text-sm" asp-validation-for="@Model.DataEstreia"></span>
+
+<div class="form-check form-switch mb-3">
+
+@* OBSERVAÇÃO: foi necessário mudar o radio input dessa div, 
+tendo em vista que houve um erro quando copiado o código do PDF. No entanto,não houve alteração na funcionalidade em si *@
+ <label asp-for="@Model.IsAlive" class="radio-inline">
+   <br>
+         <input class="form-check-input" asp-for="@Model.IsAlive" value=true type="radio">Vivo
+      </label>
+      <br>
+      <label asp-for="@Model.IsAlive" class="radio-inline">
+         <input class="form-check-input"  asp-for="@Model.IsAlive" value=false type="radio">Morto
+      </label>
+</div>
+</div>
+
+<div>
+<a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+<button type="submit" class="btn btn-primary">Salvar</button>
+</div>
+</form>

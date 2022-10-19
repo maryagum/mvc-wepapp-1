@@ -1,0 +1,10 @@
+@model Personagem
+<h1>Exclusão de Personagem</h1>
+<hr>
+<form method="post">
+<h3>Deseja realmente excluir o personagem <span class="text-primary">@Model.Nome</span>?</h3>
+<div class="mt-3">
+<a asp-action="Index" class="btn btn-success">Não</a>
+<button type="submit" class="btn btn-danger">Sim</button>
+</div>
+</form>

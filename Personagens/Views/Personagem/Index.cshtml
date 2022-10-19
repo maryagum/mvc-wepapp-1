@@ -1,0 +1,43 @@
+@model IEnumerable<Personagem>
+
+<div class="d-flex justify-content-between align-items-center">
+<h1 class="text-primary">Listagem de Personagens</h1>
+<a class="btn btn-primary" asp-controller="Personagem" asp-action="Cadastrar">Novo Personagem</a>
+</div>
+<hr>
+@* determina que, caso o número de personagens presentes no banco de dados seja maior que 0, será mostrada uma tabela exibindo-os *@
+@if (Model.Count() > 0)
+{
+<table class="table table-striped table-hover table-alunos">
+<thead>
+<tr>
+<th>Código</th>
+<th>Nome</th>
+<th>Altura</th>
+<th>Data de estreia da série/livro</th>
+<th>Está vivo?</th>
+<th>Ações</th>
+</tr>
+</thead>
+<tbody>
+ @* determina a exibição de uma tabela com os dados de cada personagem *@
+@foreach (var personagem in Model)
+{
+<tr>
+<td>@personagem.Id.ToString("D6")</td>
+<td>@personagem.Nome</td>
+<td>@personagem.Altura?.ToString("F2")m</td>
+<td>@personagem.DataEstreia?.ToShortDateString()</td>
+<td>@(personagem.IsAlive.Value ? "Sim" : "Não")</td>
+<td>
+<a class="btn btn-sm btn-primary" asp-action="Alterar"
+ asp-route-id="@personagem.Id">Alterar</a>
+<a class="btn btn-sm btn-danger" asp-action="Excluir"
+ asp-route-id="@personagem.Id">Excluir</a>
+</td>
+</tr>
+}
+</tbody>
+</table>
+}
+else { <h3>Não há personagens cadastrados.</h3> }
